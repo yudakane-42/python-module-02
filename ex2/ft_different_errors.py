@@ -19,11 +19,19 @@ def test_error_types() -> None:
     operation_number = 0
     while operation_number < 5:
         try:
-            print("Testing operation %d..." % operation_number)
+            print(f"Testing operation {operation_number}...")
             garden_operations(operation_number)
             print("Operation completed successfully")
+        except ValueError as e:
+            print(f"Caught ValueError: {e}")
+        except ZeroDivisionError as e:
+            print(f"Caught ZeroDivisionError: {e}")
+        except FileNotFoundError as e:
+            print(f"Caught FileNotFoundError: {e}")
+        except TypeError as e:
+            print(f"Caught TypeError: {e}")
         except Exception as e:
-            print("Caught %s: %s" % (type(e).__name__, e))
+            print(f"Other Error: {e}")
         operation_number += 1
     print("\nAll error types tested successfully!")
 
